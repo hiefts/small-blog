@@ -12,12 +12,10 @@
 {% endblock %}
 
 {% block body %}
-    {% for post in object_list %}
     <div>
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.date }}</p>
-        <p>{{ post.description }}</p>
-        <p>{{ post.content }}</p>
+        <h2>{{ object.title }}</h2>
+        <p>{{ object.date }}</p>
+        <p>{{ object.description }}</p>
+        <p>{{ object.content }}</p>
     </div>
-    {% endfor %}
 {% endblock %}
