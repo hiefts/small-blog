@@ -1,8 +1,22 @@
-<h1>Blog List</h1>
-{% for post in object_list %}
-<div>
-    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
-    <p>{{ post.date }}</p>
-    <p>{{ post.description }}</p>
-</div>
-{% endfor %}
+{% extends "layout.html" %}
+
+{% block title %}
+    Blog List
+{% endblock %}
+
+{% block nav %}
+    <nav class="nav">
+        <a class="nav-link active" aria-current="page" href="{% url 'post_list' %}">List</a>
+        <a class="nav-link" href="#">Write</a>
+    </nav>
+{% endblock %}
+
+{% block body %}
+    {% for post in object_list %}
+    <div>
+        <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+        <p>{{ post.date }}</p>
+        <p>{{ post.description }}</p>
+    </div>
+    {% endfor %}
+{% endblock %}
