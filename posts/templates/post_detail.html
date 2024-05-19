@@ -17,7 +17,7 @@
                     <a class="nav-link" href="{% url 'post_list' %}">List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Write</a>
+                    <a class="nav-link" href="{% url 'add_post' %}">Add</a>
                 </li>
             </ul>
         </div>
@@ -28,7 +28,7 @@
 {% block body %}
     <div>
         <h2>{{ object.title }}</h2>
-        <p>{{ object.date }}</p>
+        <p>{{ object.date|date:"F j, Y" }}</p>
         <p>{{ object.description }}</p>
         <p>{{ object.content }}</p>
     </div>

@@ -17,7 +17,7 @@
                         <a class="nav-link active" href="{% url 'post_list' %}">List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Write</a>
+                        <a class="nav-link" href="{% url 'add_post' %}">Add</a>
                     </li>
                 </ul>
             </div>
@@ -32,8 +32,9 @@
         <div class="card-body">
           <h4 class="card-title"><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h4>
           <p class="card-text">
-            <p>{{ post.date }}</p>
+            <p>{{ post.date|date:"F j, Y" }}</p>
             <p>{{ post.description }}</p>
+            <p>Author: {{ post.user.username }}</p>
           </p>
         </div>
     </div>
