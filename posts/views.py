@@ -3,9 +3,8 @@ from django.views.generic import ListView, DetailView, View
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView, LogoutView
 from .models import Post
-from .forms import PostForm, UserRegistrationForm
+from .forms import PostForm, RegisterForm
 
 # Create your views here.
 class PostListView(ListView):
@@ -31,21 +30,14 @@ def add_post(LoginRequiredMixin, View, request):
         form = PostForm()
     return render(request, 'add_post.html', {'form': form})
 
-class RegisterView(View):
-    def get(self, request):
-        form = UserRegistrationForm()
-        return render(request, 'register.html', {'form': form})
-    
-    def post(self, request):
-        form = UserRegistrationForm(request.POST)
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('post_list.html')
-        return render(request, 'register.html', {'form': form})
+        else:
+            form = RegisterForm()
 
-class CustomLoginView(LoginView):
-    template_name = 'login.html'
-
-class CustomLogoutView(LogoutView):
-    template_name = 'logged_out.html'
+        return render(request, 'registration/register.html', {"form": form})
