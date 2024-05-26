@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'posts',
     'crispy_forms',
-    "posts",
+    'crispy_bootstrap5',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -130,4 +131,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Redirect settings
 
 LOGIN_REDIRECT_URL = 'post_list'
-LOGOUT_REDIRECT_URL = 'registration/login'
+LOGOUT_REDIRECT_URL = '/login'

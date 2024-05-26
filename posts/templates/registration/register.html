@@ -15,9 +15,6 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'register' %}">Register</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{% url 'post_list' %}">List</a>
                 </li>
                 <li class="nav-item">
@@ -37,10 +34,12 @@
                 {% csrf_token %}{{form|crispy}}
             </div>
             <div>
-                <p>Have an account? Log in <a href="{% url 'registration/login' %}">here</a>!</p>
+                <p>Have an account? Log in <a href="{% url 'login' %}">here</a>!</p>
             </div>
             <div>
-                <button type="submit" class="btn btn-success">Login</button>
+                <p class="gap-5">
+                    <button type="submit" class="btn btn-success">Login</button>
+                </p>
             </div>
         </form>
     </div>

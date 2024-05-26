@@ -15,9 +15,6 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{% url 'post_list' %}">List</a>
                 </li>
                 <li class="nav-item">
@@ -40,7 +37,9 @@
                 <p>Don't have an account? Create one <a href="{% url 'register' %}">here</a>!</p>
             </div>
             <div>
-                <button type="submit" class="btn btn-success">Login</button>
+                <p class="gap5">
+                    <button type="submit" class="btn btn-success">Login</button>
+                </p>
             </div>
         </form>
     </div>
