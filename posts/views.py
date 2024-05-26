@@ -1,10 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import ListView, DetailView
-from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from .models import Post
 from .forms import PostForm, RegisterForm
 
@@ -20,7 +17,7 @@ class PostDetailView(DetailView):
     model = Post
     template_name = "post_detail.html"
 
-def add_post(LoginRequiredMixin, View, request):
+def add_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
@@ -34,13 +31,13 @@ def add_post(LoginRequiredMixin, View, request):
 
 class RegisterView(View):
     def get(self, request):
-        form = UserCreationForm()
+        form = RegisterForm()
         return render(request, 'registration/register.html', {'form': form})
 
     def post(self, request):
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Registration successful. You can now log in.')
-            return redirect('login')
+            user = form.save()
+            login(request, user)
+            return redirect('post_list')
         return render(request, 'registration/register.html', {'form': form})
