@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+{% if user.is_authenticated %}
     <div>
         <h2>Add a new blog post</h2>
         <form method="post">
@@ -28,4 +29,9 @@
             </div>
         </form>
     </div>
+{% else %}
+    <div>
+        <p>Log in <a href="{url 'login'}">here</a> to add posts!</p>
+    </div>
+{% endif %}
 {% endblock %}
